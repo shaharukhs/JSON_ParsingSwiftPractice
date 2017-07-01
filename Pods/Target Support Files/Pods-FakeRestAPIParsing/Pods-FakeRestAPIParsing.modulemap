@@ -1,0 +1,6 @@
+framework module Pods_FakeRestAPIParsing {
+  umbrella header "Pods-FakeRestAPIParsing-umbrella.h"
+
+  export *
+  module * { export * }
+}
