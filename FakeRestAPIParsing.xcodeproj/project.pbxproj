@@ -482,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A47ECEF28250D92D767B9BC8 /* Pods-FakeRestAPIParsing.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UECYSF7WKH;
 				INFOPLIST_FILE = FakeRestAPIParsing/Info.plist;
@@ -496,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9EB0E0B2B46F8D32ED6AE4D5 /* Pods-FakeRestAPIParsing.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UECYSF7WKH;
 				INFOPLIST_FILE = FakeRestAPIParsing/Info.plist;

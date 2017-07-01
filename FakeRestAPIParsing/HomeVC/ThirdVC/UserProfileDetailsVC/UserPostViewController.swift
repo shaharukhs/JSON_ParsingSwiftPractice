@@ -113,10 +113,9 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
 					self.stopAnimationView()
 				}
 				
-				
 			} catch  {
-    print("error trying to convert data to JSON 3")
-    return
+				print("error trying to convert data to JSON 3")
+				return
 			}
 		}
 		task.resume()
