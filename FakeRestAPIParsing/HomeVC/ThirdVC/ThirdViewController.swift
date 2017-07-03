@@ -49,6 +49,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
+		
 		if Constant.isConnectedToInternet() {
 			//			getUserProfileWebCall()
 			callAlmofireWebService()

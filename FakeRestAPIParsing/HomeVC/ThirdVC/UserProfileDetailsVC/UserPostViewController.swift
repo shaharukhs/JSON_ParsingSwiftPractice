@@ -37,6 +37,7 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
+		
 		if Constant.isConnectedToInternet() {
 			webAPICall()
 		} else {

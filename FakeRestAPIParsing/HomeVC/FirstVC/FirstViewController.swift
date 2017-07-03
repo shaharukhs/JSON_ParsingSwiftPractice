@@ -35,13 +35,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		
 		// Do any additional setup after loading the view, typically from a nib.
 	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
+		
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.init(hexCode: "#006055")
+		
 		if Constant.isConnectedToInternet() {
 			webAPICall()
 		} else {
@@ -159,5 +162,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		return 44.0
 	}
 
+}
+
+//MARK: - Extension
+extension UIApplication {
+	var statusBarView: UIView? {
+		return value(forKey: "statusBar") as? UIView
+	}
 }
 

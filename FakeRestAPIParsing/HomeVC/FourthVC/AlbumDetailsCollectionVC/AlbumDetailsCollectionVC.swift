@@ -36,6 +36,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
+		
 		if Constant.isConnectedToInternet() {
 			callAlmofireWebService()
 		} else {
@@ -145,6 +146,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
+	
 	
  /*
 	// MARK: - Navigation

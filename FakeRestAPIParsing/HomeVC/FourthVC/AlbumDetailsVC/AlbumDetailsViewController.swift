@@ -40,6 +40,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
+		
 		if Constant.isConnectedToInternet() {
 			callAlmofireWebService()
 		} else {

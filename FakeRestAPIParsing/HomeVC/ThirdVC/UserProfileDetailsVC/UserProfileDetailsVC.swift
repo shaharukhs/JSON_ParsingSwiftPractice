@@ -39,6 +39,7 @@ class UserProfileDetailsVC: UIViewController {
 
 			updateUserDetails()
 			loadMapView()
+			
         // Do any additional setup after loading the view.
     }
 

@@ -43,6 +43,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
+		
 		if !Constant.isConnectedToInternet() {
 			let alert = UIAlertController(title: "Alert", message: "No active internet connection", preferredStyle: UIAlertControllerStyle.alert)
 			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
