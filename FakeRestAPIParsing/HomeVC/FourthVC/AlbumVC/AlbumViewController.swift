@@ -24,7 +24,7 @@ class AlbumViewController: UIViewController, UITableViewDataSource, UITableViewD
 			super.viewDidLoad()
 
 			// Select the initial row
-			tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: UITableViewScrollPosition.none)
+			//tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: UITableViewScrollPosition.none)
 			tableView.delegate = self
 			tableView.dataSource = self
 			tableView.tableFooterView = UIView()
@@ -58,7 +58,7 @@ class AlbumViewController: UIViewController, UITableViewDataSource, UITableViewD
 		return true
 	}
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -67,7 +67,7 @@ class AlbumViewController: UIViewController, UITableViewDataSource, UITableViewD
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -76,7 +76,7 @@ class AlbumViewController: UIViewController, UITableViewDataSource, UITableViewD
 	//MARK: - Alomofire
 	func callAlmofireWebService()
 	{
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		Alamofire.request(Constant.webURL+"albums", headers:nil).responseJSON { response in
 			//  debugPrint(response)
 //			print("response:\(response)")
@@ -95,7 +95,7 @@ class AlbumViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 					DispatchQueue.main.async {
 						self.tableView.reloadData()
-						self.stopAnimationView()
+						self.stopAnimationIndicatorView()
 					}
 				
 				} catch {

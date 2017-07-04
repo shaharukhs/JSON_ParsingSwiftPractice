@@ -51,7 +51,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 	}
 	
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -60,7 +60,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -69,7 +69,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 	//MARK: - Alomofire web call
 	func callAlmofireWebService()
 	{
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		
 		let UserIdString = (NSString(format: "%@", albumId) as String)
 		let UrlString = Constant.webURL+"albums/"+UserIdString+"/photos"
@@ -90,7 +90,7 @@ class AlbumDetailsCollectionVC: UIViewController, UICollectionViewDelegate, UICo
 					
 					DispatchQueue.main.async {
 						self.collectionView.reloadData()
-						self.stopAnimationView()
+						self.stopAnimationIndicatorView()
 					}
 					
 				} catch {

@@ -55,7 +55,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 	}
 	
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -64,7 +64,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -73,7 +73,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 	//MARK: - Alomofire
 	func callAlmofireWebService()
 	{
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		
 		let UserIdString = (NSString(format: "%@", albumId) as String)
 		let UrlString = Constant.webURL+"albums/"+UserIdString+"/photos"
@@ -94,7 +94,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
 					
 					DispatchQueue.main.async {
 						self.tableView.reloadData()
-						self.stopAnimationView()
+						self.stopAnimationIndicatorView()
 					}
 					
 				} catch {

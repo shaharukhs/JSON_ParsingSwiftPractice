@@ -59,7 +59,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 	func getUsersWebCall( pagenumber : String){
 		let pagenumber = pagenumber
 		
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		let urlString: String = Constant.getUsersURL+pagenumber
 		
 		guard let url = URL(string: urlString) else {
@@ -106,7 +106,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 				
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
-					self.stopAnimationView()
+					self.stopAnimationIndicatorView()
 				}
 				
 			} catch  {
@@ -120,7 +120,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 
 	// MARK: - Activity Indicator
 	
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -129,7 +129,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -182,7 +182,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 				// handle your logic here to get more items, add it to dataSource and reload tableview
 				if Constant.isConnectedToInternet() {
 						DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-							self.stopAnimationView()
+							self.stopAnimationIndicatorView()
 							self.getUsersWebCall(pagenumber: (NSString(format: "%@", pageCount) as String))
 						}
 				} else {
@@ -193,7 +193,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 				
 			}
 		} else {
-			self.stopAnimationView()
+			self.stopAnimationIndicatorView()
 		}
 		
 	}

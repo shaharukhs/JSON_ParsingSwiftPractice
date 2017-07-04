@@ -59,7 +59,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	}
 
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -68,7 +68,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -77,7 +77,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	// MARK: - Call Web API
 	func webAPICall(){
 
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		let postsUrlString: String = Constant.webURL+"posts"
 		guard let url = URL(string: postsUrlString) else {
 			print("Error: cannot create URL")
@@ -122,7 +122,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //				print(self.titles)
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
-					self.stopAnimationView()
+					self.stopAnimationIndicatorView()
 				}
 				
 				

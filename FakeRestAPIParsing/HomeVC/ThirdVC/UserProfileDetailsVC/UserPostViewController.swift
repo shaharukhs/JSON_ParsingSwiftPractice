@@ -52,7 +52,7 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
 	}
 	
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 		
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -61,7 +61,7 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -70,7 +70,7 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
 	
 	// MARK: - Call Web API
 	func webAPICall(){
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		let UserIdString = (NSString(format: "%@", userId) as String)
 		
 		let urlString: String = Constant.webURL+"posts?userId="+UserIdString
@@ -111,7 +111,7 @@ class UserPostViewController: UIViewController, UITableViewDelegate, UITableView
 
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
-					self.stopAnimationView()
+					self.stopAnimationIndicatorView()
 				}
 				
 			} catch  {

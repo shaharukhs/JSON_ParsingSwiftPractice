@@ -69,7 +69,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 	}
 	
 	// MARK: - Activity Indicator
-	func startAnimationView() {
+	func startAnimationIndicatorView() {
 		let frame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 30, height: 30)
 
 		self.activityIndicatorView = NVActivityIndicatorView(frame: frame, type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.ballClipRotateMultiple.rawValue), color: UIColor.orange)
@@ -78,7 +78,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 		activityIndicatorView.startAnimating()
 	}
 	
-	func stopAnimationView() {
+	func stopAnimationIndicatorView() {
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
 			self.activityIndicatorView.stopAnimating()
 		}
@@ -87,7 +87,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 	// MARK: -  web service call for all users
 	func getUserProfileWebCall(){
 	
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		let urlString: String = Constant.webURL+"users"
 		//		todoEndpoint = todoEndpoint+"posts"
 		guard let url = URL(string: urlString) else {
@@ -126,7 +126,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 				
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
-					self.stopAnimationView()
+					self.stopAnimationIndicatorView()
 				}
 	
 			} catch  {
@@ -141,7 +141,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 	//MARK: - Alomofire
 	func callAlmofireWebService()
 	{
-		self.startAnimationView()
+		self.startAnimationIndicatorView()
 		Alamofire.request(Constant.webURL+"users", headers:nil).responseJSON { response in
 			//  debugPrint(response)
 			print("response:\(response)")
@@ -157,7 +157,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
 				
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
-					self.stopAnimationView()
+					self.stopAnimationIndicatorView()
 				}
 				
 			} catch {
